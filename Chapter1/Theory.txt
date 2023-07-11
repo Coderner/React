@@ -1,1 +1,12 @@
-Emmet
+1)Emmet
+Emmet is a built-in feature of VS Code
+By using shorthand and abbreviations, 
+Emmet greatly improves and speeds up your HTML and CSS workflow, saving you the stress of having to manually type out the code in full.
+
+2)Difference between React And ReactDOM
+https://www.geeksforgeeks.org/how-react-and-reactdom-works/
+
+3)Cross Origin
+https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin
+
+4) Once we set up our development environment by injecting the scripts, it is the shortest React program.

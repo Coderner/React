@@ -1,29 +1,50 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-let obj="working fine";
-console.log(obj);
+const Title = () => (
+  <a href="/" className="logo">
+     <h1 id="title">FoodBite</h1>
+  </a>
+); 
 
-let Heading =()=> (<h1>Heading</h1>)
 
-
-let Para = () => {
-    const sayHi = () =>{
-        alert("It is working!!");
-    };
+let HeaderComponent = () => {
     return(
-      <>
-        
-         <p>Hi campers</p>
-         <p>How is code going?</p>
-         <p>What is up?</p>
-         {<Heading/>}
-         {new Date().toDateString()}
-         <br/>
-         {10+8} is eigtheen
-         <button onClick={sayHi}>Click to alert</button>
-      </>
+     <div className="header">
+        <Title/>
+        <div className="nav-items">
+          <ul>
+            <li>Home</li>
+            <li>About us</li>
+            <li>Contact us</li>
+            <li>Cart</li>
+          </ul>
+        </div>
+     </div>
     );
 }
+
+
+let Body = () => {
+  return(
+    <h4>Body</h4>
+  );
+}
+
+let Footer = () => {
+  return(
+    <h4>Footer</h4>
+  );
+}
+
+let AppLayout = () => {
+  return(
+    <>
+        <HeaderComponent/>
+        <Body/>
+        <Footer/>
+    </>
+  );
+}
 let root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Para/>); 
+root.render(<AppLayout/>); 

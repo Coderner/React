@@ -1,6 +1,6 @@
 import { RestrauntList } from "../Config";
 import RestrauntCard from "./RestrauntCard";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function filterData(searchText,RestrauntList){
     const filterData= RestrauntList.filter((restraunt) => restraunt.info.name.includes(searchText));
@@ -10,7 +10,21 @@ function filterData(searchText,RestrauntList){
 const Body = () => {
     const [restraunts, setRestraunts] = useState(RestrauntList); 
     const [searchText, setSearchText] = useState("");
-    
+   
+    useEffect(()=>{ 
+     getRestraunts();
+    },[])
+   
+    async function getRestraunts(){
+         const data = await fetch(
+          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+          );
+         const ans = await data.json();
+         console.log(ans);
+         console.log(ans.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
+         setRestraunts(ans?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+   
     return(
         <>
             <div className="search-container"> 

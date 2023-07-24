@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Title = () => (
     <a href="/" className="logo">
        <h1 id="title">FoodBite</h1>

@@ -1,14 +1,15 @@
-import { RestrauntList } from "../Config";
 import RestrauntCard from "./RestrauntCard";
 import {useState, useEffect} from "react";
+import Shimmer from "./Shimmer";
 
-function filterData(searchText,RestrauntList){
-    const filterData= RestrauntList.filter((restraunt) => restraunt.info.name.includes(searchText));
+function filterData(searchText,allRestraunts){
+    const filterData= allRestraunts.filter((restraunt) => restraunt.info.name.toLowerCase().includes(searchText.toLowerCase()));
     return filterData;
 }
 
 const Body = () => {
-    const [restraunts, setRestraunts] = useState(RestrauntList); 
+    const [allRestraunts, setAllRestraunts] = useState([]);
+    const [filteredRestraunts, setFilteredRestraunts] = useState([]); 
     const [searchText, setSearchText] = useState("");
    
     useEffect(()=>{ 
@@ -22,10 +23,14 @@ const Body = () => {
          const ans = await data.json();
          console.log(ans);
          console.log(ans.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
-         setRestraunts(ans?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    }
+         setAllRestraunts(ans?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+         setFilteredRestraunts(ans?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        }
+
+    if(!allRestraunts) return null;
+    if(filteredRestraunts?.length===0) <h1>No Restraunts Found</h1>
    
-    return(
+    return (allRestraunts?.length===0)?<Shimmer/>:(
         <>
             <div className="search-container"> 
                 <input
@@ -39,8 +44,8 @@ const Body = () => {
                 />
                 <button className="search-btn"
                   onClick={()=>{
-                    const data = filterData(searchText, RestrauntList);
-                    setRestraunts(data);
+                    const data = filterData(searchText, allRestraunts);
+                    setFilteredRestraunts(data);
                   }}
                   >
                     Search</button>
@@ -48,7 +53,7 @@ const Body = () => {
             </div>
             <div className="restraunt-list">
              {
-               restraunts.map((Restraunt) => {
+               filteredRestraunts.map((Restraunt) => {
                return <RestrauntCard {...Restraunt.info} />
                })
              }

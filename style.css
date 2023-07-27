@@ -31,6 +31,15 @@
     margin:4px;
 }
 
+.shimmer-card{
+    width:15%;
+    height:310px;
+    border: 1px solid black;
+    padding:20px;
+    margin:4px;
+    background-color: rgb(211, 202, 202);
+}
+
 .card>img{
     width:100%;
 }

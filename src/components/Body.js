@@ -28,7 +28,6 @@ const Body = () => {
         }
 
     if(!allRestraunts) return null;
-    if(filteredRestraunts?.length===0) <h1>No Restraunts Found</h1>
    
     return (allRestraunts?.length===0)?<Shimmer/>:(
         <>

@@ -73,3 +73,13 @@
 .search-container>button:hover{
     cursor: pointer; 
 }
+
+.Restraunt-info-container{
+    display:flex;
+    justify-content: space-around;
+}
+
+.Restraunt-info-container>.info>img{
+    width:250px;
+    height:250px;
+}

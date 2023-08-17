@@ -1,0 +1,21 @@
+* NPM- Package manager to node.js run time environment.
+
+* npm init- package.json- it contains meta data about our project- name, version, description, 
+author, dependencies used.
+
+* parcel is a bundler
+
+* npm install -d parcel - node_modules, package-lock.json.
+
+* dev-->git-->server
+
+* Whatever we install gets installed in node modules, it acts as a database to our npm.
+
+* BrowserList- to make our website compatible for older versions of browser.
+
+* node_modules should not be put on git as package-lock.json has enough info of each and everything
+in node module.
+
+* using cdn links will require changing code everytime our version updates
+
+* fetching from our server is faster than fetching from someone else's cdn

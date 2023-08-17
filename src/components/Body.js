@@ -18,11 +18,10 @@ const Body = () => {
    
     async function getRestraunts(){
          const data = await fetch(
-          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-          );
+          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
          const ans = await data.json();
          console.log(ans);
-         console.log(ans.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
+         console.log(ans.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
          setAllRestraunts(ans?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
          setFilteredRestraunts(ans?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         }
@@ -53,7 +52,7 @@ const Body = () => {
             <div className="restraunt-list">
              {
                filteredRestraunts.map((Restraunt) => {
-               return <RestrauntCard {...Restraunt.info} />
+               return <RestrauntCard key={Restraunt.id} {...Restraunt.info} />
                })
              }
       </div>

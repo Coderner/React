@@ -1,4 +1,4 @@
-// import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,14 +8,22 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { Children } from "react";
+import userContext from "../utils/userContext";
+// import RestrauntMenu from "./components/RestrauntMenu";
 
 let AppLayout = () => {
+  const [user, setUser] =useState({
+    name:"Panni",
+    email:"something@gmail.com"
+  })
   return(
     <>
-        <Header/>
-        <Outlet/>
-        <Footer/>
+        <userContext.Provider value={user}>
+            <Header/>
+            <Outlet/>
+            <Footer/>
+        </userContext.Provider>
+       
     </>
   );
 }

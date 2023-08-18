@@ -2,11 +2,11 @@ import { useContext } from "react";
 import userContext from "../../utils/userContext";
 
 let Footer = () => {
-    const {name, email} = useContext(userContext);
+    const {user} = useContext(userContext);
     return(
       <>
           <h4>Footer</h4>
-          <h5>This site is developed by {name} email- {email}</h5>
+          <h5>This site is developed by {user.name} email- {user.email}</h5>
       </>
     );
   }

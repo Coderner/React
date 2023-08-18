@@ -13,12 +13,14 @@ import userContext from "../utils/userContext";
 
 let AppLayout = () => {
   const [user, setUser] =useState({
-    name:"Panni",
-    email:"something@gmail.com"
+      name:"Panni",
+      email:"something@gmail.com"
   })
   return(
     <>
-        <userContext.Provider value={user}>
+        <userContext.Provider value={{
+            user:user,
+            setUser:setUser}}>
             <Header/>
             <Outlet/>
             <Footer/>

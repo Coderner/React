@@ -11,7 +11,7 @@ const Title = () => (
 
 const Header = () => {
   const[isLoggedIn, setIsLoggedIn] = useState(false);
-  const {name, email} =useContext(userInfo);
+  const {user} =useContext(userInfo);
     return(
      <div className="header">
         <Title/>
@@ -23,8 +23,8 @@ const Header = () => {
             <li>Cart</li>
           </ul>
         </div>
-        <h2>{name}</h2>
-        <h2>{email}</h2>
+        <h2>{user.name}</h2>
+        <h2>{user.email}</h2>
         {
           (isLoggedIn)?<button onClick={()=>setIsLoggedIn(false)}>Logout</button>
           :<button onClick={()=>setIsLoggedIn(true)}>Login</button>

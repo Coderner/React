@@ -1,6 +1,7 @@
 import RestrauntCard from "./RestrauntCard";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
 import Shimmer from "./Shimmer";
+import userContext from "../../utils/userContext";
 
 function filterData(searchText,allRestraunts){
     const filterData= allRestraunts.filter((restraunt) => restraunt.info.name.toLowerCase().includes(searchText.toLowerCase()));
@@ -11,6 +12,7 @@ const Body = () => {
     const [allRestraunts, setAllRestraunts] = useState([]);
     const [filteredRestraunts, setFilteredRestraunts] = useState([]); 
     const [searchText, setSearchText] = useState("");
+    const {user, setUser} = useContext(userContext);
    
     useEffect(()=>{ 
      getRestraunts();
@@ -47,6 +49,8 @@ const Body = () => {
                   }}
                   >
                     Search</button>
+                <input value={user.name} onChange={e => {setUser({name:e.target.value,
+                  email:"icando@gmail.com"})}}/>
                
             </div>
             <div className="restraunt-list">
